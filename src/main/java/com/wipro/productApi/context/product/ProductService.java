@@ -17,4 +17,8 @@ public class ProductService {
     public List<Product> getEnableProducts(int page, int size) {
         return this.productRepository.findByEnable(true, PageRequest.of(page - 1, size));
     }
+
+    public List<Product> getDisableProducts(int page, int size) {
+        return this.productRepository.findByEnable(false, PageRequest.of(page - 1, size));
+    }
 }

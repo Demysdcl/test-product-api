@@ -47,5 +47,20 @@ class ProductServiceTest {
         List<Product> enableProducts = this.productService.getEnableProducts(1, 5);
         assertFalse(enableProducts.isEmpty());
         assertEquals(5, enableProducts.size());
+        enableProducts.forEach(item -> assertTrue(item.getEnable()));
+    }
+
+    @Test
+    void getDisableProducts() {
+        Mockito.when(this.productService.getEnableProducts(1, 5))
+                .thenReturn(this.products.stream()
+                        .filter(item -> !item.getEnable())
+                        .collect(Collectors.toList())
+                );
+
+        List<Product> disableProducts = this.productService.getEnableProducts(1, 5);
+        assertFalse(disableProducts.isEmpty());
+        assertEquals(5, disableProducts.size());
+        disableProducts.forEach(item -> assertFalse(item.getEnable()));
     }
 }

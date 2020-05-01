@@ -22,4 +22,10 @@ public class ProductController {
         return ResponseEntity
                 .ok(this.productService.getEnableProducts(page,size));
     }
+
+    @GetMapping("/disable")
+    public ResponseEntity<List<Product>> getDisableProducts(@RequestParam int page, @RequestParam int size) {
+        return ResponseEntity
+                .ok(this.productService.getDisableProducts(page,size));
+    }
 }
