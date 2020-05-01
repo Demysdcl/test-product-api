@@ -1,4 +1,4 @@
-INSERT INTO product (product_id, description, unitPrice, creationDate, enable) VALUES
+INSERT INTO product (product_id, description, unit_price, creation_date, enable) VALUES
         (1, 'Arroz', 2.3, '2020-10-10', 1),
         (2, 'Feijão', 2.3, '2020-10-10', 1),
         (3, 'Cadeira', 2.3, '2020-10-10', 1),

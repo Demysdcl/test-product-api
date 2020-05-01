@@ -1,7 +1,7 @@
 CREATE TABLE product (
     product_id BIGINT NOT NULL PRIMARY KEY,
     description VARCHAR NOT NULL,
-    unitPrice DOUBLE NOT NULL,
-    creationDate DATE NOT NULL,
+    unit_price DOUBLE NOT NULL,
+    creation_date DATE NOT NULL,
     enable BIT
 );

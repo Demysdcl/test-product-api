@@ -20,14 +20,14 @@ public class Product {
     @Column(name = "product_id")
     private Long id;
     private String description;
-    private BigDecimal unitValue;
+    private BigDecimal unitPrice;
     private LocalDate creationDate;
     private Boolean enable;
 
-    public Product(Long id, String description, BigDecimal unitValue) {
+    public Product(Long id, String description, BigDecimal unitPrice) {
         this.id = id;
         this.description = description;
-        this.unitValue = unitValue;
+        this.unitPrice = unitPrice;
         this.creationDate = LocalDate.now();
         this.enable = true;
     }
