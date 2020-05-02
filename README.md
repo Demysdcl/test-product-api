@@ -1,7 +1,5 @@
 # Spring Boot Application productApi
 
-The only thing better than a Maven archetype is a repo you can fork with everything already setup. Skip the documentation and just fork-and-code. 
-
 ## Built With
 
 * 	[Maven](https://maven.apache.org/) - Dependency Management
@@ -15,7 +13,7 @@ The only thing better than a Maven archetype is a repo you can fork with everyth
 * 	[JUnit 5](https://junit.org/junit5/) - Open-Source software friendly testing framework for Java
 ## Running the application locally
 
-There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.arc.sbtest.SBtemplateApplication` class from your IDE.
+There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.wipro.productApi.ProductApiApplication` class from your IDE.
 
 - Download the zip or clone the Git repository.
 - Unzip the zip file (if you downloaded one)
