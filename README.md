@@ -65,6 +65,9 @@ Automated dependency updates done via [Dependabot](https://dependabot.com/)
 
 * [Swagger](http://localhost:8080/swagger-ui.html) - Documentation & Testing
 
+It is needed to do the authentication.
+Pressed the button `Authorize` and inform username `wipro` and password `123`
+
 ## Files and Directories
 
 The project (a.k.a. project directory) has a particular directory structure. A representative project is shown below:
