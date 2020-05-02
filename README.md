@@ -132,12 +132,10 @@ The project (a.k.a. project directory) has a particular directory structure. A r
 │       └── java
 │           ├── com.wipro.productApi
 │           ├── com.wipro.productApi.context.product
-│           └──com.wipro.productApi.context.user
+│           └── com.wipro.productApi.context.user
+│
 ├── JRE System Library
 ├── Maven Dependencies
-├── bin
-├── logs
-│   └── application.log
 ├── src
 ├── target
 ├── HELP.md
