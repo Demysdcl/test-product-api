@@ -36,8 +36,23 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build()
+                .apiInfo(apiInfo())
                 .securitySchemes(Collections.singletonList(securitySchema()))
                 .securityContexts(Collections.singletonList(securityContext()));
+    }
+
+    private ApiInfo apiInfo() {
+
+        return new ApiInfo(
+                "API para gerenciamento de produtos",
+                "Projeto criado para o Bando Positivo",
+                "Versão 1.0",
+                "",
+                new Contact("Demys Cota de Lima", "https://www.linkedin.com/in/demys-lima/", "demysdcl@gmail.com"),
+                "Permitido para uso geral",
+                "https://www.gnu.org/licenses/licenses.pt-br.html",
+                Collections.emptyList()
+        );
     }
 
     private OAuth securitySchema() {

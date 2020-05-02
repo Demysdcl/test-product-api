@@ -1,5 +1,6 @@
 package com.wipro.productApi.context.product;
 
+import io.swagger.annotations.Api;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -7,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
+@Api("Endpoints para consulta, edição, remoção e criação de produtos")
 public class ProductController {
     private ProductService productService;
 
