@@ -1,1 +1,5 @@
-
+host.full.dns.auth.link: http://localhost:8080
+app:
+  client:
+    id: client
+    secret: 123

@@ -47,7 +47,7 @@ public class ProductService {
 
     private Supplier<ObjectNotFoundExpection> getObjectNotFoundExpectionSupplier(Long id) {
         return () -> new ObjectNotFoundExpection(
-                String.format("Nenhum produto encontro com o código: %d", id));
+                String.format("Nenhum produto encontrado com o código: %d", id));
     }
 
 }

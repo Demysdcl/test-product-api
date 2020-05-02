@@ -14,11 +14,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ProductServiceTest {
+
     @Mock
     private ProductRepository productRepository;
 
@@ -27,7 +27,7 @@ class ProductServiceTest {
     private List<Product> products;
 
     @BeforeEach
-    public void init() {
+    public void setUp() {
         productService = new ProductService(productRepository);
         products = Stream.of(
                 "1-arroz", "2-feijão", "3-sal", "4-macarrão", "5-bolacha",
@@ -138,7 +138,7 @@ class ProductServiceTest {
 
     private String config_message_when_id20_and_optional_empty() {
         given_id_then_return(20l, Optional.empty());
-        return "Nenhum produto encontro com o código: 20";
+        return "Nenhum produto encontrado com o código: 20";
     }
 
     private void given_id_then_return(long id, Optional<Product> toReturn) {
