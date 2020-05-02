@@ -57,10 +57,11 @@ Automated dependency updates done via [Dependabot](https://dependabot.com/)
 |----------|--------------|
 |`http://localhost:8080/products`                                | POST |
 |`http://localhost:8080/products/{id}`                           | GET | 
+|`http://localhost:8080/products/{id}`                           | PUT | 
 |`http://localhost:8080/products/{id}`                           | DELETE |
 |`http://localhost:8080/products/{id}/disable`                   | PUT | 
-|`http://localhost:8080/products/enable`                         | GET | 
-|`http://localhost:8080/products/disable`                        | GET | 
+|`http://localhost:8080/products/enable?page=1&size=10`          | GET | 
+|`http://localhost:8080/products/disable?page=1&size=10`         | GET | 
 
 ## Documentation
 
