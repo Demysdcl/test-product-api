@@ -43,7 +43,7 @@ class ProductServiceTest {
                         .collect(Collectors.toList())
                 );
 
-        List<Product> enableProducts = this.productService.getEnableProducts(1, 5);
+    List<Product> enableProducts = this.productService.getEnableProducts(1, 5);
         assertFalse(enableProducts.isEmpty());
         assertEquals(5, enableProducts.size());
         enableProducts.forEach(item -> assertTrue(item.getEnable()));
@@ -83,5 +83,17 @@ class ProductServiceTest {
                 message,
                 exception.getMessage()
         );
+    }
+
+    @Test
+    void should_update_product_with_id_1l() {
+        Product findProduct = products.get(0);
+        findProduct.setUnitPrice(BigDecimal.TEN);
+        findProduct.setDescription("Notebook");
+        Mockito.when(this.productService.updateProduct(1L, findProduct)).thenReturn(findProduct);
+        Product product = this.productService.updateProduct(1l, findProduct);
+        assertNotNull(product);
+        assertEquals("Notebook", product.getDescription());
+        assertEquals(BigDecimal.TEN, product.getUnitPrice());
     }
 }

@@ -30,4 +30,12 @@ public class ProductService {
                         String.format("Nenhum produto encontro com o código: %d", id)));
     }
 
+    public Product updateProduct(Long id, Product product) {
+        product.setId(id);
+        return this.productRepository.findById(id)
+                .map(item -> this.productRepository.save(product))
+                .orElseThrow(() -> new ObjectNotFoundExpection(
+                        String.format("Nenhum produto encontro com o código: %d", id)));
+    }
+
 }
