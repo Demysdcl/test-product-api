@@ -1,7 +1,6 @@
 package com.wipro.productApi.context.product;
 
-import org.aspectj.lang.annotation.Before;
-import org.junit.jupiter.api.BeforeAll;
+import com.wipro.productApi.exception.ObjectNotFoundExpection;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -37,7 +36,7 @@ class ProductServiceTest {
     }
 
     @Test
-    void getEnableProducts() {
+    void should_return_only_enable_products() {
         Mockito.when(this.productService.getEnableProducts(1, 5))
                 .thenReturn(this.products.stream()
                         .filter(Product::getEnable)
@@ -51,7 +50,7 @@ class ProductServiceTest {
     }
 
     @Test
-    void getDisableProducts() {
+    void should_return_only_disable_products() {
         Mockito.when(this.productService.getEnableProducts(1, 5))
                 .thenReturn(this.products.stream()
                         .filter(item -> !item.getEnable())
@@ -62,5 +61,27 @@ class ProductServiceTest {
         assertFalse(disableProducts.isEmpty());
         assertEquals(5, disableProducts.size());
         disableProducts.forEach(item -> assertFalse(item.getEnable()));
+    }
+
+    @Test
+    void should_return_product_with_id_1l() {
+        Mockito.when(this.productService.getProductById(1L)).thenReturn(products.get(0));
+        Product product = this.productService.getProductById(1L);
+        assertNotNull(product);
+        assertEquals("arroz", product.getDescription());
+    }
+
+    @Test
+    void should_throws_object_not_found_exception() {
+        String message = "Nenhum produto encontro com o código: 20";
+        Mockito.when(this.productService.getProductById(20L)).thenThrow(new ObjectNotFoundExpection(message));
+        Exception exception = assertThrows(ObjectNotFoundExpection.class, () -> {
+            Product product = this.productService.getProductById(20L);
+            System.out.println(product);
+        });
+        assertEquals(
+                message,
+                exception.getMessage()
+        );
     }
 }

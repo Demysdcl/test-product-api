@@ -1,10 +1,7 @@
 package com.wipro.productApi.context.product;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +24,11 @@ public class ProductController {
     public ResponseEntity<List<Product>> getDisableProducts(@RequestParam int page, @RequestParam int size) {
         return ResponseEntity
                 .ok(this.productService.getDisableProducts(page,size));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+        return ResponseEntity
+                .ok(this.productService.getProductById(id));
     }
 }
