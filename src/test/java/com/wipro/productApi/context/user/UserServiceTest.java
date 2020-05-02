@@ -1,8 +1,10 @@
 package com.wipro.productApi.context.user;
 
+import com.wipro.productApi.context.product.Product;
 import com.wipro.productApi.exception.ObjectNotFoundExpection;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.AdditionalAnswers;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -45,4 +47,6 @@ class UserServiceTest {
                 "Nenhum usuário encontrado para o login: test",
                 exception.getMessage());
     }
+
+
 }

@@ -41,4 +41,9 @@ public class ProductController {
     public ResponseEntity<Product> disableProductById(@PathVariable  Long id) {
         return ResponseEntity.ok(this.productService.disableProductById(id));
     }
+
+    @PostMapping
+    public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
+        return ResponseEntity.ok(this.productService.save(product));
+    }
 }

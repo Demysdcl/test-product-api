@@ -4,6 +4,8 @@ import com.wipro.productApi.exception.ObjectNotFoundExpection;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
+
+import org.mockito.AdditionalAnswers;
 import org.mockito.Mock;
 import static org.mockito.Mockito.*;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -129,6 +131,14 @@ class ProductServiceTest {
             this.productService.disableProductById(20L);
         });
         assertEquals(message, exception.getMessage());
+    }
+
+    @Test
+    void should_save_product() {
+        when_save_product_then_return_product();
+        Product savedProduct = this.productService.save(products.get(0));
+        assertNotNull(savedProduct);
+        assertEquals("arroz", savedProduct.getDescription());
     }
 
     private void when_save_product_then_return_product() {

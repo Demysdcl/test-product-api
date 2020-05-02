@@ -45,6 +45,10 @@ public class ProductService {
                 }).orElseThrow(getObjectNotFoundExpectionSupplier(id));
     }
 
+    public Product save(Product product) {
+        return this.productRepository.save(product);
+    }
+
     private Supplier<ObjectNotFoundExpection> getObjectNotFoundExpectionSupplier(Long id) {
         return () -> new ObjectNotFoundExpection(
                 String.format("Nenhum produto encontrado com o código: %d", id));
