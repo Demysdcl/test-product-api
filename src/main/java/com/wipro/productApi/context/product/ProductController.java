@@ -36,4 +36,9 @@ public class ProductController {
     public ResponseEntity<Product> updateProduct(@PathVariable  Long id, @RequestBody Product product) {
         return ResponseEntity.ok(this.productService.updateProduct(id, product));
     }
+
+    @PutMapping("/{id}/disable")
+    public ResponseEntity<Product> disableProductById(@PathVariable  Long id) {
+        return ResponseEntity.ok(this.productService.disableProductById(id));
+    }
 }

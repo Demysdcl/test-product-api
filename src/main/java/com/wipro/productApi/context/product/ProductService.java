@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 @Service
 public class ProductService {
@@ -26,16 +27,27 @@ public class ProductService {
 
     public Product getProductById(Long id) {
         return this.productRepository.findById(id)
-                .orElseThrow(() -> new ObjectNotFoundExpection(
-                        String.format("Nenhum produto encontro com o código: %d", id)));
+                .orElseThrow(getObjectNotFoundExpectionSupplier(id));
     }
 
     public Product updateProduct(Long id, Product product) {
         product.setId(id);
         return this.productRepository.findById(id)
                 .map(item -> this.productRepository.save(product))
-                .orElseThrow(() -> new ObjectNotFoundExpection(
-                        String.format("Nenhum produto encontro com o código: %d", id)));
+                .orElseThrow(getObjectNotFoundExpectionSupplier(id));
+    }
+
+    public Product disableProductById(Long id) {
+        return this.productRepository.findById(id)
+                .map(item -> {
+                    item.setEnable(false);
+                    return this.productRepository.save(item);
+                }).orElseThrow(getObjectNotFoundExpectionSupplier(id));
+    }
+
+    private Supplier<ObjectNotFoundExpection> getObjectNotFoundExpectionSupplier(Long id) {
+        return () -> new ObjectNotFoundExpection(
+                String.format("Nenhum produto encontro com o código: %d", id));
     }
 
 }
