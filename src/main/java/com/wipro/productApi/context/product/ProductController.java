@@ -46,4 +46,10 @@ public class ProductController {
     public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
         return ResponseEntity.ok(this.productService.save(product));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteProduct(@PathVariable Long id) {
+        this.productService.deleteProductById(id);
+        return ResponseEntity.noContent().build();
+    }
 }

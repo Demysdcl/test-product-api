@@ -5,7 +5,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Supplier;
 
 @Service
@@ -47,6 +46,14 @@ public class ProductService {
 
     public Product save(Product product) {
         return this.productRepository.save(product);
+    }
+
+    public void deleteProductById(Long id) {
+        this.productRepository.findById(id)
+                .map(item -> {
+                    this.productRepository.deleteById(id);
+                    return null;
+                }).orElseThrow(getObjectNotFoundExpectionSupplier(id));
     }
 
     private Supplier<ObjectNotFoundExpection> getObjectNotFoundExpectionSupplier(Long id) {

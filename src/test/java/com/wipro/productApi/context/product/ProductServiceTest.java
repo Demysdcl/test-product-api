@@ -141,6 +141,15 @@ class ProductServiceTest {
         assertEquals("arroz", savedProduct.getDescription());
     }
 
+    @Test
+    void should_thrown_object_not_found_exception_when_delete_id20() {
+        String message = config_message_when_id20_and_optional_empty();
+        Exception exception = assertThrows(ObjectNotFoundExpection.class, () -> {
+            this.productService.deleteProductById(20L);
+        });
+        assertEquals(message, exception.getMessage());
+    }
+
     private void when_save_product_then_return_product() {
         when(this.productRepository.save(any(Product.class)))
                 .thenAnswer(returnsFirstArg());
