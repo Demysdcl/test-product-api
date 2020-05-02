@@ -30,14 +30,9 @@ Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/
 mvn spring-boot:run
 ```
 
-### Security
+### OAuth2
 
 ```
-<dependency>
-  <groupId>org.springframework.boot</groupId>
-  <artifactId>spring-boot-starter-security</artifactId>
-</dependency>
-
 <dependency>
     <groupId>org.springframework.security.oauth</groupId>
     <artifactId>spring-security-oauth2</artifactId>
@@ -45,7 +40,45 @@ mvn spring-boot:run
 </dependency>
 ```
 
+#### Request token
+- `Method` - POST
+- `URL` - http://localhost:8080/oauth/token?grant_type=password&username=wipro&password=123
+- `Response` - 
+```
+{
+  "access_token":"MTQ0NjJkZmQ5OTM2NDE1ZTZjNGZmZjI3",
+  "token_type":"bearer",
+  "expires_in":3600,
+  "refresh_token":"IwOGYzYTlmM2YxOTQ5MGE3YmNmMDFkNTVk",
+  "scope":"create"
+}
+```
+
+#### Refresh token
+- `Method` - POST
+- `URL` - http://localhost:8080/oauth/token?grant_type=refresh_token&refresh_token={REFRESH_TOKEN}
+- `Response` - 
+```
+{
+  "access_token":"MTQ0NjJkZmQ5OTM2NDE1ZTZjNGZmZjI3",
+  "token_type":"bearer",
+  "expires_in":3600,
+  "refresh_token":"IwOGYzYTlmM2YxOTQ5MGE3YmNmMDFkNTVk",
+  "scope":"create"
+}
+```
+
+### Security
+
+```
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
+
 Spring Boot Starter Security main username is `wipro` and password is `123`
+
 
 Automated dependency updates done via [Dependabot](https://dependabot.com/)
 
